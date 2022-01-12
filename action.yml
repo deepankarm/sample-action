@@ -1,0 +1,34 @@
+name: DocsQA (by Jina AI)
+description: Deploy a Q&A bot for your docs 
+author: Jina AI
+
+inputs:
+  token:
+    description: 'Github PAT to authenticate with DocsQA & to receive emails with server details'
+    required: true
+  docsdir:
+    description: 'docs directory to index (default: docs)'
+    required: false
+    default: 'docs'
+  index_pattern:
+    description: 'glob pattern to index (default: **/*.md)'
+    required: false
+    default: '**/*.md'
+  readme:
+    description: 'whether to index readme or not (default: true)'
+    required: false
+    default: true
+  branch:
+    description: 'branch to clone the docs from (default: default branch of the repo)'
+    required: false
+    default: null
+   
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.token }}
+    - ${{ inputs.docsdir }}
+    - ${{ inputs.index_pattern }}
+    - ${{ inputs.readme }}
+    - ${{ inputs.branch }}
