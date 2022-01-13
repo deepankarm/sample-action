@@ -3,6 +3,9 @@ description: Deploy a Q&A bot for your docs
 author: Jina AI
 
 inputs:
+  repo:
+    description: 'Pass the name of the repo'
+    required: true
   token:
     description: 'Github PAT to authenticate with DocsQA & to receive emails with server details'
     required: true
@@ -17,16 +20,17 @@ inputs:
   readme:
     description: 'whether to index readme or not (default: true)'
     required: false
-    default: true
+    default: 'true'
   branch:
     description: 'branch to clone the docs from (default: default branch of the repo)'
     required: false
-    default: null
+    default: 'none'
    
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.repo }}
     - ${{ inputs.token }}
     - ${{ inputs.docsdir }}
     - ${{ inputs.index_pattern }}
