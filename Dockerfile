@@ -1,7 +1,7 @@
 FROM python:3.8
 
-COPY requirements.txt entrypoint.py ./
+COPY entrypoint.py /usr/bin/entrypoint.py
 
-RUN ls -l && pip install -r ./requirements.txt
+RUN ls -l && pip install requests
 
-ENTRYPOINT ["python", "./entrypoint.py"]
+ENTRYPOINT ["python", "/usr/bin/entrypoint.py"]
