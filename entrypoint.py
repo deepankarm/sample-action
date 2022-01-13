@@ -61,4 +61,5 @@ def main(args):
 
 
 if __name__ == '__main__':
+    assert len(sys.argv) == 7, 'Enough arguments are not passed'
     main(sys.argv[1:])
