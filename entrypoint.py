@@ -53,11 +53,11 @@ def main(args):
         LOGGER.error('Couldn\'t trigger (Unauthorized)')
         sys.exit(-1)
     elif response.status_code == HTTPStatus.FORBIDDEN:
-        LOGGER.error(f'Wrong token used, please create a PAT with user:email scope')
+        LOGGER.error(f'Wrong token used, please create a PAT with `user:email` scope')
         sys.exit(-1)
     else:
         LOGGER.error(f'Failed with code {response.status_code}')
-    assert response.status_code in [HTTPStatus.OK, HTTPStatus.CREATED]
+        sys.exit(-1)
 
 
 if __name__ == '__main__':
