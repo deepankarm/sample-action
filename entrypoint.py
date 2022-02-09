@@ -21,7 +21,7 @@ def get_logger():
 def main(args):
     LOGGER = get_logger()
     repo, token, docsdir, index_pattern, readme, branch = args
-    url = 'https://m702s4l4m9.execute-api.us-east-1.amazonaws.com/dev/projects'  # TODO
+    url = 'https://apidocsqa.jina.ai/projects'  # TODO
     body = {'repo': repo}
     if docsdir != 'docs':
         body['docsdir'] = docsdir
